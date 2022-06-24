@@ -1,0 +1,226 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+<!-- ======= Hero Section ======= -->
+<section class="d-flex align-items-center" id="hero">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+        <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-9 text-center">
+                <h1>Welcome</h1>
+                <h2>Softprodigy</h2>
+            </div>
+        </div>
+        <div class="text-center">
+<!--            <a class="btn-get-started scrollto" href="#about">Get Started</a>-->
+        </div>
+        <div class="row icon-boxes">
+            {% for i in dest %}
+            <div class="col-md-6 col-lg-3 align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in"
+                 data-aos-delay="200">
+                <a href="{% url 'post' i.id %}">
+                    <div class="icon-box">
+                        <div class="icon">
+                            <i> <img alt="" src=media/{{i.icon}}></i>
+                        </div>
+                        <h4 class="title"> {{i.title}} </h4>
+                        <p class="description"> {{i.paragraph}} </p>
+                        <p> {{i.updatedOn}}</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+
+    <!-- ======= About Video Section ======= -->
+    <section class="about-video" id="about-video">
+        <div class="container" data-aos="fade-up">
+            {% for j in saa %}
+            <div class="row">
+
+
+                <div class="col-lg-6 video-box align-self-baseline" data-aos="fade-right" data-aos-delay="100">
+                    <img alt="" class="img-fluid" src="media/{{ j.img }}">
+                    <a class="glightbox play-btn mb-4" data-autoplay="true"
+                       data-vbtype="video" href="https://www.youtube.com/watch?v=jDDaplaOz7Q"></a>
+                </div>
+
+                <div class="col-lg-6 pt-3 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
+                    <h3> {{ j.title2 }} </h3>
+                    <p class="fst-italic">
+                        {{ j.list }}
+                    </p>
+                    <ul>
+                        <li><i class="bx bx-check-double"></i> About this blogsite in my opnion.
+                        </li>
+                        <li><i class="bx bx-check-double"></i> Here you will get the different catogory website along different sites
+
+                        <li><i class="bx bx-check-double"></i> from Here you can easily can access different sites
+                        </li>
+                        <li><i class="bx bx-check-double"></i>Easy to read used basic english
+
+                        </li>
+                        <li><i class="bx bx-check-double"></i> Easy to understand any level of reader can go with these blogs
+                        </li>
+                    </ul>
+                    <p>
+                        {{j.paragraph2}}
+                    </p>
+                </div>
+
+
+            </div>
+            <!--            <p>media/{{ j.img }}</p>-->
+            {% endfor %}
+
+        </div>
+    </section>
+
+    <!-- ======= Portfolio Section ======= -->
+    <section class="portfolio" id="portfolio">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Portfolio</h2>
+                <p>Here are the some of the our best blogs you can directly check it out from here </p>
+            </div>
+
+            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="300">
+                {% for i in port %}
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                    <div class="portfolio-wrap">
+                        <img alt="" class="img-fluid" src="media/{{i.img3}}">
+                        <div class="portfolio-info">
+                            <h4>Blog</h4>
+                            <p>App</p>
+                            <div class="portfolio-links">
+<!--                                <a class="portfolio-lightbox" data-gallery="portfolioGallery"-->
+<!--                                   href="/static/assets/img/portfolio/portfolio-1.jpg" title="App 1"><i-->
+<!--                                        class="bx bx-plus"></i></a>-->
+                                <a href="/post_details/{{i.post_id}}" title="More Details"><i class="bx bx-link"></i></a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="like-&-comments">
+                        <div class="row">
+<!--                            <div class="col-md-6">-->
+<!--                                <i class="bx bx-like"></i>-->
+<!--                            </div>-->
+                            <div class="col-md-6 text-align-right">
+                                <a href="/post_details/{{i.post_id}}"> <i class="bx bx-comment"></i></a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                {% endfor %}
+
+
+
+            </div>
+
+
+        </div>
+    </section>
+
+
+    <!-- ======= Contact Me Section ======= -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="section-title">
+                        <span>Contact Me</span>
+                        <h2>Contact Me</h2>
+                        <p>If any query ,you can reach to us information given below</p>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-lg-6">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="info-box">
+                                        <i class="bx bx-share-alt"></i>
+                                        <h3>Social Profiles</h3>
+                                        <div class="social-links">
+                                            <a class="twitter" href="#"><i class="bi bi-twitter"></i></a>
+                                            <a class="facebook" href="#"><i class="bi bi-facebook"></i></a>
+                                            <a class="instagram" href="#"><i class="bi bi-instagram"></i></a>
+                                            <a class="google-plus" href="#"><i class="bi bi-skype"></i></a>
+                                            <a class="linkedin" href="#"><i class="bi bi-linkedin"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="info-box mt-4">
+                                        <i class="bx bx-envelope"></i>
+                                        <h3>Email Me</h3>
+                                        <p>contact@example.com</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="info-box mt-4">
+                                        <i class="bx bx-phone-call"></i>
+                                        <h3>Call Me</h3>
+                                        <p>+1 5589 55488 55</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-6">
+                            <form action="contacts" method="post" role="form">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <input class="form-control" id="name" name="name" placeholder="Your Name"
+                                               required type="text">
+                                    </div>
+                                    <div class="col-md-6 form-group mt-3 mt-md-0">
+                                        <input class="form-control" id="email" name="email" placeholder="Your Email"
+                                               required type="email">
+                                    </div>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <input class="form-control" id="subject" name="subject" placeholder="Subject"
+                                           required type="text">
+                                </div>
+                                <div class="form-group mt-3">
+                                    <textarea class="form-control" name="message" placeholder="Message" required
+                                              rows="6"></textarea>
+                                </div>
+                                <div class="my-3">
+                                    <!--                                    <div class="loading">Loading</div>-->
+                                    <div class="error-message"></div>
+                                    <!--                                    <div class="sent-message">Your message has been sent. Thank you!</div>-->
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-info " onclick="myFunction()">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </section><!-- End Contact Me Section -->
+
+</main><!-- End #main -->
+
+</body>
+{% endblock %}

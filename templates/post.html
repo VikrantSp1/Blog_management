@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title> - Index</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/static/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/static/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="/static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/static/assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+
+        <h1 class="logo"><a href="/">Softprodigy</a></h1>
+        <br>
+
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+
+        <nav id="navbar" class="navbar">
+            <ul>
+<!--                <li><a class="nav-link scrollto active" href="/">Home</a></li>-->
+<!--                <li><a class="nav-link scrollto o" href="/portfolio">Portfolio</a></li>-->
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+    </div>
+</header>
+
+
+======= Breadcrumbs =======
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Blog List</h2>
+        </div>
+        <p> Here are the some of the trendiest Blog Hub ' YOU WILL LOVE TO EXPLORE IT ' </p>
+
+    </div>
+    <div class="widget-content">
+        {% if info %}
+    <nav aria-label="Page navigation ">
+      <ul class="pagination justify-content-end ">
+        {% if info.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{info.previous_page_number}}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+          {% endif %}
+          {% for n in info.paginator.page_range %}
+          {% if info.number == n %}
+          <li class="page-item active">
+            <span class="page-link">{{ n }}<span class="sr-only">(current)</span></span>
+          </li>
+          {% elif n > info.number|add:'-3' and n < info.number|add:'3' %}
+          <li class="page-item"><a class="page-link"
+              href="?page={{ n }}">{{ n }}</a></li>
+          {% endif %}
+          {% endfor %}
+        {% if info.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{info.next_page_number}}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+  {% endif %}
+
+    <section>
+        <div class="container">
+            <div class="row">
+                {% for i in x %}
+
+                <div class="col-md-6">
+                    <div class="shadow-section">
+                        <a href="{% url 'post_details' i.id %}">
+                        <div class="row">
+                            <div class="col-sm-5">
+                               <img alt="" class="img-fluid img-portfolio " src="/media/{{ i.prim_img }}">
+                            </div>
+                            <div class="col-sm-7">
+
+                                <h6> {{i.heading}} </h6>
+<!--                                <p> Lorem ipssssum dolor sit consectetur. </p>-->
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <img src="/media/{{ i.sec_img }}" alt=""
+                                             class="img-thumbnail img-fluid">
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <h6 class="headstyle">
+                                            {{i.heading2}}</h6>
+                                        <p> {{i.paragraph}} </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+
+                    </div>
+                </div>
+
+                {% endfor %}
+
+
+
+
+
+
+
+<!--                <div class="col-md-6">-->
+<!--                    <div class="shadow-section">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-sm-5">-->
+<!--                                <img src="/static/assets/img/fashion/beauty2.jpg" alt="" class="img-fluid">-->
+<!--                            </div>-->
+<!--                            <div class="col-sm-7">-->
+
+<!--                                <h6> Aesthetic Collection</h6>-->
+<!--                                <p> Lorem ipssssum dolor sit consectetur. </p>-->
+<!--                                <div class="row">-->
+<!--                                    <div class="col-sm-3">-->
+<!--                                        <img src="/static/assets/img/fashion/beauty1.jpg" alt=""-->
+<!--                                             class="img-thumbnail img-fluid">-->
+<!--                                    </div>-->
+<!--                                    <div class="col-sm-9">-->
+<!--                                        <h6 class="headstyle">-->
+<!--                                            Aesthetic Collection</h6>-->
+<!--                                        <p> Lorem ipsum dolor sit consectetur. </p>-->
+<!--                                    </div>-->
+
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-6">-->
+<!--                    <div class="shadow-section">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-sm-5">-->
+<!--                                <img src="/static/assets/img/fashion/beauty2.jpg" alt="" class="img-fluid">-->
+<!--                            </div>-->
+<!--                            <div class="col-sm-7">-->
+
+<!--                                <h6> Aesthetic Collection</h6>-->
+<!--                                <p> Lorem ipssssum dolor sit consectetur. </p>-->
+<!--                                <div class="row">-->
+<!--                                    <div class="col-sm-3">-->
+<!--                                        <img src="/static/assets/img/fashion/beauty1.jpg" alt=""-->
+<!--                                             class="img-thumbnail img-fluid">-->
+<!--                                    </div>-->
+<!--                                    <div class="col-sm-9">-->
+<!--                                        <h6 class="headstyle">-->
+<!--                                            Aesthetic Collection</h6>-->
+<!--                                        <p> Lorem ipsum dolor sit consectetur. </p>-->
+<!--                                    </div>-->
+
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-6">-->
+<!--                    <div class="shadow-section">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-sm-5">-->
+<!--                                <img src="/static/assets/img/fashion/beauty2.jpg" alt="" class="img-fluid">-->
+<!--                            </div>-->
+<!--                            <div class="col-sm-7">-->
+
+<!--                                <h6> Aesthetic Collection</h6>-->
+<!--                                <p> Lorem ipssssum dolor sit consectetur. </p>-->
+<!--                                <div class="row">-->
+<!--                                    <div class="col-sm-3">-->
+<!--                                        <img src="/static/assets/img/fashion/beauty1.jpg" alt=""-->
+<!--                                             class="img-thumbnail img-fluid">-->
+<!--                                    </div>-->
+<!--                                    <div class="col-sm-9">-->
+<!--                                        <h6 class="headstyle">-->
+<!--                                            Aesthetic Collection</h6>-->
+<!--                                        <p> Lorem ipsum dolor sit consectetur. </p>-->
+<!--                                    </div>-->
+
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-6">-->
+<!--                    <div class="shadow-section">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-sm-5">-->
+<!--                                <img src="/static/assets/img/fashion/beauty2.jpg" alt="" class="img-fluid">-->
+<!--                            </div>-->
+<!--                            <div class="col-sm-7">-->
+
+<!--                                <h6> Aesthetic Collection</h6>-->
+<!--                                <p> Lorem ipssssum dolor sit consectetur. </p>-->
+<!--                                <div class="row">-->
+<!--                                    <div class="col-sm-3">-->
+<!--                                        <img src="/static/assets/img/fashion/beauty1.jpg" alt=""-->
+<!--                                             class="img-thumbnail img-fluid">-->
+<!--                                    </div>-->
+<!--                                    <div class="col-sm-9">-->
+<!--                                        <h6 class="headstyle">-->
+<!--                                            Aesthetic Collection</h6>-->
+<!--                                        <p> Lorem ipsum dolor sit consectetur. </p>-->
+<!--                                    </div>-->
+
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-6">-->
+<!--                    <div class="shadow-section">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-sm-5">-->
+<!--                                <img src="/static/assets/img/fashion/beauty2.jpg" alt="" class="img-fluid">-->
+<!--                            </div>-->
+<!--                            <div class="col-sm-7">-->
+
+<!--                                <h6> Aesthetic Collection</h6>-->
+<!--                                <p> Lorem ipssssum dolor sit consectetur. </p>-->
+<!--                                <div class="row">-->
+<!--                                    <div class="col-sm-3">-->
+<!--                                        <img src="/static/assets/img/fashion/beauty1.jpg" alt=""-->
+<!--                                             class="img-thumbnail img-fluid">-->
+<!--                                    </div>-->
+<!--                                    <div class="col-sm-9">-->
+<!--                                        <h6 class="headstyle">-->
+<!--                                            Aesthetic Collection</h6>-->
+<!--                                        <p> Lorem ipsum dolor sit consectetur. </p>-->
+<!--                                    </div>-->
+
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+
+            </div>
+     </section>
+
+
+</section>
+
+<footer id="footer">
+
+
+    <div class="container d-md-flex py-4">
+
+        <div class="me-md-auto text-center text-md-start">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Softprodigy</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                Designed by <a href="https://softprodigy.com/">Softprodigy</a>
+            </div>
+        </div>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+            <a class="twitter" href="https://twitter.com/SoftProdigy?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"  target="_blank"><i class="bx bxl-twitter"></i></a>
+            <a class="facebook" href="https://www.facebook.com/softprodigysolutions/" target="_blank"><i class="bx bxl-facebook"  ></i></a>
+            <a class="instagram" href="https://www.instagram.com/softprodigy_official/?hl=en" target="_blank"><i class="bx bxl-instagram"  ></i></a>
+<!--            <a class="google-plus" href="#"><i class="bx bxl-skype"></i></a>-->
+            <a class="linkedin" href="https://www.linkedin.com/company/softprodigy/mycompany/" target="_blank"><i class="bx bxl-linkedin"  ></i></a>
+        </div>
+    </div>
+</footer> <!-- End Footer -->
+
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="/static/assets/vendor/purecounter/purecounter.js"></script>
+<script src="/static/assets/vendor/aos/aos.js"></script>
+<script src="/static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/static/assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="/static/assets/js/main.js"></script>
+<script>
+    function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("mai").style.marginLeft = "250px";
+  document.getElementById("header").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("mai").style.marginLeft= "0";
+  document.getElementById("header").style.marginLeft = "0px";
+  document.body.style.backgroundColor = "white";
+}
+
+
+
+
+</script>
+</body>

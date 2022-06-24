@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Portfolio </title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="/static/assets/img/favicon.png" rel="icon">
+    <link href="/static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/static/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/static/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="/static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/static/assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<header class="fixed-top" id="header">
+    <div class="container d-flex align-items-center justify-content-between">
+
+        <h1 class="logo"><a href="/">Softprodigy</a></h1>
+        <nav class="navbar" id="navbar">
+            <ul>
+                <li><a class="nav-link scrollto active" href="/">Home</a></li>
+<!--                <li><a class="nav-link scrollto o" href="#portfolio">Portfolio</a></li>-->
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+    </div>
+</header><!-- End Header -->
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs" id="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Portfolio Details</h2>
+
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <section class="portfolio-details" id="portfolio-details">
+        <div class="container">
+
+            <div class="row">
+                {% for d in post_details %}
+                <div class="col-sm-4">
+                    <div class="swiper-wrapper align-items-center">
+
+                        <!--                <div class="swiper-slide">-->
+                        <!--                  <img src="/static/assets/img/portfolio/portfolio-1.jpg" alt="">-->
+                        <!--                </div>-->
+
+                        <!--                <div class="swiper-slide">-->
+                        <!--                  <img src="/static/assets/img/portfolio/portfolio-2.jpg" alt="">-->
+                        <!--                </div>-->
+
+                        <!--                <div class="swiper-slide">-->
+                        <!--                  <img src="/static/assets/img/portfolio/portfolio-3.jpg" alt="">-->
+                        <!--                </div>-->
+
+                        <div class="swiper-slide">
+                            <img alt="" src="/media/{{d.img3}}" style="width: -webkit-fill-available;">
+                        </div>
+
+
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="portfolio-info">
+                        <h3>About Product</h3>
+                        <ul>
+                            <li><strong>Category</strong>: {{d.title3}}</li>
+                            <li><strong>Client</strong>: {{d.client}}</li>
+                            <li><strong>Project date</strong>: {{d.projDate}}</li>
+
+                        </ul>
+                    </div>
+                    <div class="portfolio-description">
+                        <h2>{{ d.primary_heading }}</h2>
+                        <p>
+                            {{d.primary_paragraph}}
+                        </p>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+                <div class="col-sm-2">
+
+                    <div class="small-posts">
+                        <h3>Latest Post</h3>
+                        {% for i in Latest_info %}
+
+
+                        <a href="{%  url 'post_details' i.id %}">
+                            <div class="post-info">
+
+                                <div class="post-section">
+                                    <div class="row ">
+                                        <div class="col-lg-6">
+                                            <div class="latest-post-image">
+                                                <img class="img-fluid" src="/media/{{i.prim_img}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <h6> {{i.heading}}</h6>
+                                            <p></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            {% for d in post_details %}
+            <div class="comment-sections">
+                <div class="row gy-4">
+                    <div class="col-lg-9 ">
+                        <h3>{{d.Blogtitle }}</h3>
+                        <p><small>{{ d.posted_on }} </small> (<span> {{d.views}} views </span>) </p>
+                        <p> {{ d.BlogContent }} </p>
+                    </div>
+               <div class="comments">
+                        <h3 class="aside-title ">Recent comments</h3>
+                        <div class="comments-grids">
+                             {%  for i in commentData %}
+                            <div class="media-grid">
+                                <div class="media">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="img-responsive " style="height:65px ; width:auto ;"   width="100px" alt="placeholder image">
+                                    <div class="media-body comments-grid-right">
+                                        <h5>{{i.name}}</h5>
+                                        <ul class="p-0 comment">
+                                            <li class="">{{i.timestamp__date }}</li>
+
+                                        </ul>
+                                        <p>{{i.comment}}
+
+<!--                                            <button onclick="myFunction()">reply</button>-->
+                                            <br>
+
+<!--                                           <div id="myDIV" style="display:none">-->
+<!--                                        <input type="text" name="" id="">-->
+                                           </div>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                           {% endfor %}
+                        </div>
+                    </div>
+                  <form action="/postComment/{{ post_id  }}" method="post">
+                      {% csrf_token %}
+                            <div class="input-grids">
+                                <div class="form-group">
+
+                                    <input type="text" name="Name" class="form-control mb-2" placeholder="Your Name" required="">
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="Comment" class="form-control mb-2 " placeholder="Your Comment" required=""></textarea>
+                                </div>
+<!--                                 <div class="form-group">-->
+<!--                                    <textarea name="Comment" class="form-control mb-2 " placeholder="Your Comment" required=""></textarea>-->
+<!--                                </div>-->
+                            </div>
+
+                                <button class="btn btn-style btn-primary" type="submit">Post Comment
+                            </button>
+                        </form>
+
+
+
+                </div>
+            </div>
+  {% endfor %}
+
+
+
+        </div>
+
+        </div>
+    </section><!-- End Portfolio Details Section -->
+
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+
+
+    <div class="container d-md-flex py-4">
+
+        <div class="me-md-auto text-center text-md-start">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Softprodigy</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                Designed by <a href="https://softprodigy.com/">Softprodigy</a>
+            </div>
+        </div>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+            <a class="twitter" href="https://twitter.com/SoftProdigy?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"  target="_blank"><i class="bx bxl-twitter"></i></a>
+            <a class="facebook" href="https://www.facebook.com/softprodigysolutions/" target="_blank"><i class="bx bxl-facebook"  ></i></a>
+            <a class="instagram" href="https://www.instagram.com/softprodigy_official/?hl=en" target="_blank"><i class="bx bxl-instagram"  ></i></a>
+<!--            <a class="google-plus" href="#"><i class="bx bxl-skype"></i></a>-->
+            <a class="linkedin" href="https://www.linkedin.com/company/softprodigy/mycompany/" target="_blank"><i class="bx bxl-linkedin"  ></i></a>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+
+<div id="preloader"></div>
+<a class="back-to-top d-flex align-items-center justify-content-center" href="#"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="/static/assets/vendor/purecounter/purecounter.js"></script>
+<script src="/static/assets/vendor/aos/aos.js"></script>
+<script src="/static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/static/assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="/static/assets/js/main.js"></script>
+
+
+
+</body>
+
+</html>

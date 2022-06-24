@@ -1,0 +1,76 @@
+{% extends "base/base.html" %}
+{% block content%}
+
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Blog List</h2>
+        </div>
+        <p> Here are the some of the trendiest Blog Hub ' YOU WILL LOVE TO EXPLORE IT ' </p>
+
+    </div>
+
+<form action="AddBlog" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  <div class="form-row container ">
+    <div class="form-group col-md-6">
+      <label>Image</label>
+      <input type="file" class="form-control"  name="Image">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Title</label>
+      <input type="text" class="form-control"  name="Title" id="inputPassword4" >
+    </div>
+      <br>
+  <div class="form-group  col-md-6">
+
+        <label>Category:</label>
+
+        <select name="category_choices" >
+            {% for i in category %}
+             <option value="{{i.id}}">{{i.title}}</option>
+
+            {% endfor %}
+        </select>
+  </div>
+      <br>
+  <div class="form-group  col-md-6">
+    <label for="inputAddress2">Client</label>
+    <input type="text" name="Client" class="form-control" id="inputAddress2">
+  </div>
+    <div class="form-group col-md-6">
+      <label >ProjDate</label>
+        <input type="text" name="ProjDate" class="form-control">
+    </div>
+    <div class="form-group col-md-6">
+      <label >Blog-title</label>
+      <input type="text" name="Blog_title" class="form-control" >
+    </div>
+        <div class="form-group col-md-6">
+      <label >Blog-des</label>
+      <input type="text" name="Blog_des" class="form-control" >
+    </div>
+
+      <div class="form-group col-md-6">
+      <label>BlogContent</label>
+      <input type="text" name="BlogContent" class="form-control">
+    </div>
+      <div class="form-group col-md-6">
+      <label>Primary heading</label>
+      <input type="text" name="Primary_heading" class="form-control">
+    </div>
+     <div class="form-group col-md-6">
+      <label>Primary paragraph</label>
+      <input type="text" name="Primary_paragraph" class="form-control">
+    </div>
+      <br>
+      <input type="submit">
+  </div>
+
+
+
+ </form>
+ {% endblock %}
+</body>

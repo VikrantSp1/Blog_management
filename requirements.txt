@@ -1,0 +1,8 @@
+admin
+asgiref
+Django
+mysqlclient
+sqlparse
+python-decouple
+django-tinymce
+Pillow
