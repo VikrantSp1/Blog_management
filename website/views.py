@@ -1,3 +1,4 @@
+from urllib import response
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
@@ -14,24 +15,32 @@ def home(request):
     if request.method == "GET":
         try:
             # a2 =Profile.objects.filter(country='Pakistan').values('user__username','state','city','user__email')
-            a2 = Profile.objects.filter(country='India', isactive=1).values('user__username', 'state', 'city',
-                                                                            'user__email')
-            print('1')
-
+            # a2 = Profile.objects.filter(country='India', isactive=1).values('user__username', 'state', 'city',
+            #                                                                 'user__email')
+            # print('1')
             # print(a2)
-
+            username=""
+            if request.user.is_authenticated:
+                print('55')   
+                print(request.user) 
+                username= request.user.username
+                firstname=request.user.first_name
+                print(firstname)
+                print('66')
+            print('1')
             dests = Categories.objects.filter().values('id','icon', 'title', 'paragraph')
             print('2')
             # sa= authorInsight.objects.filter().values('img','title2','paragraph2','list')[0]
             sa = authorInsight.objects.filter().values('img', 'title2', 'paragraph2', 'list')
             print('3')
-            portfolioImg = post_details.objects.filter().values('id','post_id','img3')
+            portfolioImg = post_details.objects.filter(post__is_published=1).values('id','post_id','img3','post__is_published')
             print('4')
-            return render(request, 'home.html', {'dest': dests, 'saa': sa, 'port': portfolioImg})
-            print('5')
+         
+            return render(request, 'home.html', {'dest': dests, 'saa': sa, 'port': portfolioImg ,'username':username})
         except Exception as E:
             print("----------")
             print(E)
+            return HttpResponse(str(E))
     else:
         print("actual post portfolio")
 
@@ -52,16 +61,24 @@ def postdetails(request,post_id):
     print("under post_details")
     try:
 
+        a=99
+        b=343243535
+        print("=-=-=-=-")
+        post_obj=post.objects.get(id=post_id)
         if not ViewCount.objects.filter(post_id=post_id,user_id=request.user):
-             b =ViewCount(post_id_id=int(post_id), user_id=request.user)
-             b.save()
-             count=ViewCount.objects.filter(post_id_id=post_id).count()
-             print(count)
-             post_details.objects.filter(post_id=post_id).update(views=count)
+            b=ViewCount(post_id=post_obj,user_id=request.user)
+            b.save()
+
+            post_count =ViewCount.objects.filter(post_id=post_id).count()
+            post_details.objects.filter(post_id=post_id).update(views=post_count)
+
+            
+        
+           
 
 
         print('###')
-
+        print('####@@@@###',request.user)
 
         commentData=BlogComment.objects.filter(post_id=post_id).values('name','comment','timestamp__date')
         print(commentData)
@@ -74,7 +91,7 @@ def postdetails(request,post_id):
 
         return render(request,'post-details.html',{'post_details':data , 'Latest_info':Latest_info,'post_id':post_id,'commentData':commentData})
 
-    except Exception  as e:
+    except Exception as e:
         print(e,"==================")
 
         return HttpResponse(str(e))

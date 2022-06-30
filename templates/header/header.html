@@ -48,8 +48,8 @@
             <li><a class="closebtn" href="javascript:void(0)" onclick="closeNav()">&times;</a></li>
             <li><a class="nav-link scrollto active" href="">Home</a></li>
             <li><a class="nav-link scrollto o" href="#portfolio">Portfolio</a></li>
-            {% if request.user.is_authenticated %}
-            <li class="name"> &emsp; Hello, {{ user.first_name}}</li>
+            {% if username %}
+            <li class="name"> &emsp; Hello, {{ username }}</li>
             <li><a class="nav-link scrollto active" href="/AddBlog">Add Post</a></li>
             <li><a class="nav-link scrollto active" href="/logout">Logout</a></li>
             {% else %}

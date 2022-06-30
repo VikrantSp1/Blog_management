@@ -27,8 +27,8 @@ class addPost(View):
         img2_path = uploadImage(img2)
         User_data = request.session.get("user_id")
 
-        new_post=post.objects.create(title=data['title'],category_id=data['category_id'], prim_img=img2_path,
-                                                heading=data['heading'], sec_img=img1_path,heading2=data['heading2'],is_published=0)
+        new_post=post.objects.create(title=data['title'],category_id=data['category_id'], prim_img=img1_path,
+                                                heading=data['heading'], sec_img=img2_path,heading2=data['heading2'],paragraph=data['paragraph'],is_published=0)
                                       
         print('==================',new_post,post.id)  
         print(request.POST)                                      
