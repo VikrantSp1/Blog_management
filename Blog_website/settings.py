@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': config('BMSystem', default='BMSystem'),
         'USER': config('BMSystemU', default='BMSystemU'),
         'PASSWORD': config('BMSystemPwD', default='BMSystemPwD'),
-        'HOST': config('DBHOST', default='192.168.0.45'),
+        'HOST': config('DBHOST', default='localhost'),
         'PORT': 3306,
         'OPTIONS': {
             'charset': 'utf8mb4',
