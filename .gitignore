@@ -115,7 +115,6 @@ eolenv/
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
-settings.py
 #__init.py
 /eol_admin/__init__.py
 /eol_admin/settings.py
