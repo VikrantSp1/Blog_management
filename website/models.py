@@ -47,7 +47,7 @@ class post(models.Model):
     sec_img = models.ImageField(upload_to="pics")
     heading2 = models.CharField(max_length=100,default='SOME STRING')
     paragraph = models.CharField(max_length=100,default='SOME STRING')
-    is_published=models.BooleanField(default=False)
+    is_published = models.BooleanField(default=False)
 
 
 

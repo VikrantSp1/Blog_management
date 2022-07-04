@@ -7,6 +7,7 @@ from .models import Categories, post_details,post,BlogComment
 from .models import authorInsight, Profile, contactInfo ,ViewCount
 from django.contrib.auth.decorators import login_required
 from django.db import connection
+from django.db.models import Q
 # Create your views here.
 from django.shortcuts import redirect
 
@@ -35,6 +36,23 @@ def home(request):
             print('3')
             portfolioImg = post_details.objects.filter(post__is_published=1).values('id','post_id','img3','post__is_published')
             print('4')
+
+            query1= post.objects.filter(heading= 'v heading').values('title','category__id')
+            
+            query2 =post.objects.filter(heading2='v heading 2').values('title','category__id')
+
+            y =query1|query2
+
+            a= post.objects.filter( Q(heading='v heading')  |  Q(heading2='v heading 2')| Q(id__gt=1)).values('prim_img','title','category__id')
+            print('aaa',a)
+            for x in a:
+                print('yyy',x)
+                print("====+======+====")
+
+
+
+            b= User.objects.filter(Q(first_name="viki") & Q(id=4)).values('first_name','id')
+            print('4444b444',b)    
          
             return render(request, 'home.html', {'dest': dests, 'saa': sa, 'port': portfolioImg ,'username':username})
         except Exception as E:
@@ -74,7 +92,7 @@ def postdetails(request,post_id):
 
             
         
-           
+        
 
 
         print('###')
