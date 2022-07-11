@@ -6,3 +6,4 @@ sqlparse
 python-decouple
 django-tinymce
 Pillow
+tzdata==2022.1

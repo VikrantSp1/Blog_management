@@ -1,15 +1,16 @@
-{% extends "layout/base.html" %}
+{% extends "base/base.html" %}
 {% block content%}
 
 <section id="breadcrumbs" class="breadcrumbs">
   <div class="container">
 
     <div class="d-flex justify-content-between align-items-center">
-      <h2>Blog List</h2>
+    <h2> Add Blog </h2>
     </div>
-    <p> Here are the some of the trendiest Blog Hub ' YOU WILL LOVE TO EXPLORE IT ' </p>
-
-  </div>
+    <div>
+    <p> Let's create , Add your Blog from here share your thoughts to the world </p>
+    </div>
+  
 
   <form action="AddBlog" method="post" enctype="multipart/form-data">
     {% csrf_token %}
@@ -118,6 +119,7 @@
         </form>
       </div>
     </div>
+  </div>
 
 
 

@@ -8,6 +8,8 @@ from .models import authorInsight, Profile, contactInfo ,ViewCount
 from django.contrib.auth.decorators import login_required
 from django.db import connection
 from django.db.models import Q
+from .serializers.serializers import BlogCommentSerializers
+from datetime import datetime
 # Create your views here.
 from django.shortcuts import redirect
 
@@ -87,7 +89,7 @@ def postdetails(request,post_id):
             b=ViewCount(post_id=post_obj,user_id=request.user)
             b.save()
 
-            post_count =ViewCount.objects.filter(post_id=post_id).count()
+            post_count = ViewCount.objects.filter(post_id=post_id).count()
             post_details.objects.filter(post_id=post_id).update(views=post_count)
 
             
@@ -116,21 +118,36 @@ def postdetails(request,post_id):
 
 
 def postComment(request,post_id):
-    print("under postcomment")
-    if request.method == "POST":
-        comment = request.POST.get('Comment')
-        name = request.POST.get('Name')
-        blogcomment = request.POST.get('id')
-        # post = post.objects.get(id)
-        # commentData= BlogComment(request,post_id)
-        print(comment,name)
-        comment = BlogComment(post_id=post_id,comment=comment, name=name)
+    print("under postcomment","sdjklhasdjkhasdhd")
+    try: 
 
-        comment.save()
+        if request.method == "POST":
+            #print("post")
+            #print(request.POST)
+            #print(request.POST.get('Comment'),request.POST.get('Name'))
+            
+            #print(request.POST)
+            data = request.POST
+            form=BlogCommentSerializers(data=data)            
+            if form.is_valid():
+                print("11111",form)
+               
+                comment2 = BlogComment(post_id=post_id,comment=data["Comment"], name=data["Name"])
+                
+                comment2.save()
+            else:
+                print('123')
+                print(form.errors)
+                return HttpResponse(form.errors)
+                
+            # messages.success(request, "Your comment has been posted successfully")
 
-        # messages.success(request, "Your comment has been posted successfully")
+            return redirect("/post_details/"+ str(post_id))
+    
+    except Exception as e:
+        print(e,"==================")
 
-    return redirect("/post_details/"+ str(post_id))
+        return HttpResponse(str(e))
 
 
 def Contact(request):

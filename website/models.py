@@ -6,6 +6,7 @@ from tinymce.models import HTMLField
 
 
 
+
 # Create your models here.
 class Profile(models.Model):
     class Meta:
@@ -39,15 +40,15 @@ class Categories(models.Model):
 
 
 class post(models.Model):
-    id = models.AutoField(primary_key=True)
-    title = models.CharField(max_length=100)
-    category = models.ForeignKey(Categories, on_delete=models.CASCADE)
-    prim_img = models.ImageField(upload_to="pics")
-    heading = models.CharField(max_length=100)
-    sec_img = models.ImageField(upload_to="pics")
-    heading2 = models.CharField(max_length=100,default='SOME STRING')
-    paragraph = models.CharField(max_length=100,default='SOME STRING')
-    is_published = models.BooleanField(default=False)
+    id = models.AutoField(primary_key=True)              
+    title = models.CharField(max_length=100)             
+    category = models.ForeignKey(Categories, on_delete=models.CASCADE)           
+    prim_img = models.ImageField(upload_to="pics")        
+    heading = models.CharField(max_length=100)          
+    sec_img = models.ImageField(upload_to="pics")          
+    heading2 = models.CharField(max_length=100,default='SOME STRING')             
+    paragraph = models.CharField(max_length=100,default='SOME STRING')        
+    is_published = models.BooleanField(default=False)                   
 
 
 
@@ -77,19 +78,22 @@ class post_details(models.Model):
     img3 = models.ImageField(upload_to="pics")
     user = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True)
     title3 = models.CharField(max_length=100)
-    post = models.ForeignKey(post,on_delete=models.CASCADE)
+    post = models.ForeignKey(post,on_delete=models.CASCADE,related_name="post_data")
     client = models.CharField(max_length=100)
     views = models.IntegerField(default=0)
     projDate = models.CharField(max_length=100)
     Blogtitle = models.CharField(max_length=100)
-    Blogdes = models.CharField(max_length=100)
     BlogContent = HTMLField()
     posted_on = models.DateField(auto_now_add=True,null=True)
     primary_heading = models.CharField(max_length=100,default='')
-    primary_paragraph = models.TextField(default='')
-
+    primary_paragraph = models.TextField(default='') 
+    
     def __str__(self):
         return self.title3
+    
+    
+
+    
 
 
 class BlogComment(models.Model):

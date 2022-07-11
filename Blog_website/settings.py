@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'website',
-    'tinymce'
+    'tinymce',
+    'rest_framework',
+    
 ]
 
 MIDDLEWARE = [
@@ -47,6 +49,8 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django_session_timeout.middleware.SessionTimeoutMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -85,9 +89,9 @@ WSGI_APPLICATION = 'Blog_website.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': config('BMSystem', default='BMSystem'),
-        'USER': config('BMSystemU', default='BMSystemU'),
-        'PASSWORD': config('BMSystemPwD', default='BMSystemPwD'),
+        'NAME': config('DBNAME', default='BMSystem'),
+        'USER': config('DBUSR', default='BMSystemU'),
+        'PASSWORD': config('', default=''),
         'HOST': config('DBHOST', default='localhost'),
         'PORT': 3306,
         'OPTIONS': {
@@ -146,3 +150,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+SESSION_EXPIRE_SECONDS = 5000

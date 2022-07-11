@@ -45,14 +45,18 @@
     </div>
     <div class="sidenav" id="mySidenav">
         <ul>
+            {% if user.is_authenticated %}
             <li><a class="closebtn" href="javascript:void(0)" onclick="closeNav()">&times;</a></li>
-            <li><a class="nav-link scrollto active" href="">Home</a></li>
+            <li><a class="nav-link scrollto active" href="/">Home</a></li>
             <li><a class="nav-link scrollto o" href="#portfolio">Portfolio</a></li>
-            {% if username %}
-            <li class="name"> &emsp; Hello, {{ username }}</li>
+            <li class="name"> &emsp; Hello, {{ user.username }}</li>
+            <li><a class="nav-link scrollto active" href="/myBlog">My Blog</a></li>
             <li><a class="nav-link scrollto active" href="/AddBlog">Add Post</a></li>
             <li><a class="nav-link scrollto active" href="/logout">Logout</a></li>
             {% else %}
+            <li><a class="closebtn" href="javascript:void(0)" onclick="closeNav()">&times;</a></li>
+            <li><a class="nav-link scrollto active" href="/">Home</a></li>
+            <li><a class="nav-link scrollto o" href="#portfolio">Portfolio</a></li>
             <li><a class="nav-link scrollto o" href="/register">Sign-Up</a></li>
             <li><a class="nav-link scrollto o" href="/login">Login</a></li>
             {% endif %}
