@@ -89,9 +89,9 @@ WSGI_APPLICATION = 'Blog_website.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': config('DBNAME', default='BMSystem'),
-        'USER': config('DBUSR', default='BMSystemU'),
-        'PASSWORD': config('', default=''),
+        'NAME': config('BMSystem', default='BMSystem'),
+        'USER': config('BMSystemU', default='BMSystemU'),
+        'PASSWORD': config('BMSystemPwD', default='BMSystemPwD'),
         'HOST': config('DBHOST', default='localhost'),
         'PORT': 3306,
         'OPTIONS': {
