@@ -107,7 +107,7 @@ def postdetails(request,post_id):
         category_id = post_obj['category_id']
         Latest_info = post.objects.filter(category_id=category_id).exclude(id=post_id).values('id', 'prim_img', 'heading','heading2')
         print()
-        data = post_details.objects.filter(post_id=post_id).values('id','img3','title3','client','projDate','Blogtitle','posted_on','Blogdes','BlogContent','primary_heading','primary_paragraph','views')
+        data = post_details.objects.filter(post_id=post_id).values('id','img3','title3','client','projDate','Blogtitle','posted_on','BlogContent','primary_heading','primary_paragraph','views')
 
         return render(request,'post-details.html',{'post_details':data , 'Latest_info':Latest_info,'post_id':post_id,'commentData':commentData})
 

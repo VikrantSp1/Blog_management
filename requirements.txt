@@ -7,3 +7,5 @@ python-decouple
 django-tinymce
 Pillow
 tzdata==2022.1
+djangorestframework==3.13.1
+django-session-timeout==0.1.0
